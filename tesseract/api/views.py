@@ -30,8 +30,9 @@ class CreateRepo(APIView):
             return Response(response, status=status.HTTP_400_BAD_REQUEST)
 
         if create_git_repo(org_name=request_data.org_name,
-                           repo_name=request_data.repo_name,
-                           description=request_data.description):
+                           repo_name=request_data.team_name,
+                           description=request_data.description,
+                           app_name=request_data.app_name):
             response = {"message": "Repo Created Successfully"}
             return Response(response, status=status.HTTP_201_CREATED)
         else:
